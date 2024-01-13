@@ -50,7 +50,7 @@
 	font-weight: 500;
 	transform: translateY(-100%);
 	transition: all 0.5s;
-	z-index: 10;
+	z-index: 999;
 }
 @media (min-width: 769px) {
 	.header__nav-mobile {
