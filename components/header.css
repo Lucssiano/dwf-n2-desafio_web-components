@@ -9,6 +9,10 @@
 .header__menu-button {
 	z-index: 5;
 }
+.header__menu-button.active {
+	position: fixed;
+	right: 30px;
+}
 @media (min-width: 769px) {
 	.header__menu-button {
 		display: none;

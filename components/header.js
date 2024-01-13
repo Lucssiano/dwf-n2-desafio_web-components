@@ -21,11 +21,13 @@ function headerComponent(el) {
   </nav>`;
 
 	const burgerMenuEl = el.querySelector('.header__menu-button');
+	const burgerMenuButton = el.querySelector('.header__menu-button');
 	const burgerMenuLinesEL = el.querySelectorAll('.header__menu-button .header__menu-div');
 	const navbarEl = el.querySelector('.header__nav-mobile');
 
 	burgerMenuEl.addEventListener('click', () => {
 		navbarEl.classList.toggle('active');
+		burgerMenuButton.classList.toggle('active');
 		burgerMenuLinesEL.forEach((line) => {
 			line.classList.toggle('active');
 		});

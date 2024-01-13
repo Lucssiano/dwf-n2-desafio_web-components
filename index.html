@@ -9,26 +9,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <script defer src="./components/header.js"></script>
+    <script defer src="./components/services.js"></script>
     <script defer src="./pages/index.js"></script>
     <link rel="stylesheet" href="./pages/index.css">
     <link rel="stylesheet" href="./components/header.css">
+    <link rel="stylesheet" href="./components/services.css">
     <!-- <link rel="stylesheet" href="components/footer.css"> -->
   </head>
 
   <body>
     <header class="header"></header>
 
-    <main class="home">
-      <h1 class="home__title">Hola Soy Lucho</h1>
-      <img src="./img/rocket-img.png" alt="Imagen de Cohete" class="home__img">
+    <main class="welcome">
+      <div class="welcome__container">
+        <h1 class="welcome__title">Hola,<span>Soy Lucho</span></h1>
+        <img src="./img/rocket-img.png" alt="Cohete" class="welcome__img">
+      </div>
     </main>
 
     <section class="about-me">
-
+      <div class="about-me__info-container">
+        <h2 class="about-me__title">Soy Lucho</h2>
+        <p class="about-me__description">Hola, soy Luciano! Actualmente me encuentro cursando la carrera de Ingenieria
+          en
+          Sistemas de Información en
+          la UTN FRBA. Mi objetivo es
+          obtener experiencia laboral, ir mejorando de a poco y por sobre todo incorporar nuevos
+          conocimientos. </p>
+      </div>
+      <img src="./img/imagen-personal.jpg" alt="Luciano" class="about-me__personal-img">
     </section>
 
     <section class="services">
-
+      <h2 class="services__title">Mis <span>servicios</span></h2>
+      <div class="services__container"></div>
     </section>
 
     <section class="contact">
