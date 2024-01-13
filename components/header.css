@@ -7,7 +7,7 @@
 	font-family: 'Poppins', sans-serif;
 }
 .header__menu-button {
-	z-index: 5;
+	z-index: 1000;
 }
 .header__menu-button.active {
 	position: fixed;
@@ -50,7 +50,7 @@
 	font-weight: 500;
 	transform: translateY(-100%);
 	transition: all 0.5s;
-	z-index: 999;
+	z-index: 11;
 }
 @media (min-width: 769px) {
 	.header__nav-mobile {
