@@ -1,10 +1,10 @@
-.header {
+.header__container {
 	padding: 37px 24px;
 	background-color: #13171c;
+	font-family: 'Poppins', sans-serif;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-family: 'Poppins', sans-serif;
 }
 .header__menu-button {
 	z-index: 1000;

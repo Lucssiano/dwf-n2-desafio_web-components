@@ -1,6 +1,8 @@
 function headerComponent(el) {
-	/* Modifico directamente el html del elemento porque sino se rompe todo el flex */
-	el.innerHTML = `   
+	const componentEl = document.createElement('div');
+	componentEl.setAttribute('class', 'header__container');
+
+	componentEl.innerHTML = `   
   <img src="./img/logo-img.jpg" alt="Logo Luciano" class="logo">
   <div class="header__menu-button">
     <div class="header__menu-div line-1"></div>
@@ -20,10 +22,10 @@ function headerComponent(el) {
     <a href="#contacto" class="header__nav-link">Contacto</a>
   </nav>`;
 
-	const burgerMenuEl = el.querySelector('.header__menu-button');
-	const burgerMenuButton = el.querySelector('.header__menu-button');
-	const burgerMenuLinesEL = el.querySelectorAll('.header__menu-button .header__menu-div');
-	const navbarEl = el.querySelector('.header__nav-mobile');
+	const burgerMenuEl = componentEl.querySelector('.header__menu-button');
+	const burgerMenuButton = componentEl.querySelector('.header__menu-button');
+	const burgerMenuLinesEL = componentEl.querySelectorAll('.header__menu-button .header__menu-div');
+	const navbarEl = componentEl.querySelector('.header__nav-mobile');
 
 	burgerMenuEl.addEventListener('click', () => {
 		navbarEl.classList.toggle('active');
@@ -32,4 +34,6 @@ function headerComponent(el) {
 			line.classList.toggle('active');
 		});
 	});
+
+	el.appendChild(componentEl);
 }
