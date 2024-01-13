@@ -3,7 +3,9 @@ function headerComponent(el) {
 	componentEl.setAttribute('class', 'header__container');
 
 	componentEl.innerHTML = `   
-  <img src="./img/logo-img.jpg" alt="Logo Luciano" class="logo">
+  <a href="/" class="img-logo-container">
+    <img src="./img/logo-img.jpg" alt="Logo Luciano" class="logo">
+  </a>
   <div class="header__menu-button">
     <div class="header__menu-div line-1"></div>
     <div class="header__menu-div line-2"></div>
