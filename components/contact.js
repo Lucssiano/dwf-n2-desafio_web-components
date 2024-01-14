@@ -4,18 +4,18 @@ function contactComponent(el) {
 
 	componentEl.innerHTML = `    
   <h2 class="contact__title">Escribime</h2>
-  <form action="" class="contact__form">
+  <form class="contact__form">
     <div class="contact__form-fieldset">
-      <label for="nombre" class="contact__form-label">Nombre</label>
-      <input type="text" id="nombre" placeholder="Tu nombre" class="contact__form-text-input">
+      <label for="name" class="contact__form-label">Nombre</label>
+      <input name="name" type="text" id="name" placeholder="Tu nombre" class="contact__form-text-input">
     </div>
     <div class="contact__form-fieldset">
       <label for="email" class="contact__form-label">Email</label>
-      <input type="email" id="email" placeholder="tu@gmail.com" class="contact__form-mail-input">
+      <input name="email" type="email" id="email" placeholder="tu@gmail.com" class="contact__form-mail-input">
     </div>
     <div class="contact__form-fieldset">
-      <label for="mensaje" class="contact__form-label">Mensaje</label>
-      <textarea id="mensaje" class="contact__form-textarea"></textarea>
+      <label for="message" class="contact__form-label">Mensaje</label>
+      <textarea name="message" id="message" class="contact__form-textarea"></textarea>
     </div>
     <button class="contact__form-submit-button" type="submit">
       <span>Enviar <i class='bx bx-paper-plane'></i></span>
@@ -23,10 +23,21 @@ function contactComponent(el) {
   </form>`;
 
 	const formEl = componentEl.querySelector('.contact__form');
-	formEl.addEventListener('submit', (e) => {
+	formEl.addEventListener('submit', async (e) => {
 		e.preventDefault();
-		console.log(e.target);
-		/* Hay que hacer lo que pide la consigna */
+		const form = e.target;
+		const data = {
+			to: form.email.value,
+			message: form.message.value,
+		};
+		/* Que hace esa api? */
+		const response = await fetch('https://apx-api.vercel.app/api/utils/dwf', {
+			method: 'POST',
+			headers: { 'content-type': 'application/json' },
+			body: JSON.stringify(data),
+		});
+		form.reset(); /* Me sirve para que se borren los datos del form una vez que se envió el mail */
+		return response.json();
 	});
 
 	el.appendChild(componentEl);

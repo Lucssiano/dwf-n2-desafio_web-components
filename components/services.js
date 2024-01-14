@@ -23,4 +23,5 @@ function servicesComponent(el) {
   </div>`;
 
 	el.appendChild(componentEl);
+	// el.insertBefore(componentEl, el.firstChild);
 }

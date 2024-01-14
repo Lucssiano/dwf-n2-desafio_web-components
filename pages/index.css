@@ -7,56 +7,6 @@ body {
 	font-family: 'Poppins', sans-serif;
 }
 
-/* Logo tanto del header como del footer */
-.logo {
-	height: 60px;
-}
-
-/* ### Welcome Block ### */
-.welcome {
-	background-color: #13171c;
-	padding: 70px 45px;
-}
-@media (min-width: 769px) {
-	/* No se si es lo mejor pero elegí hacerlo así */
-	.welcome {
-		padding-top: 100px;
-		padding-bottom: 150px;
-	}
-}
-.welcome__container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 50px;
-}
-@media (min-width: 769px) {
-	.welcome__container {
-		flex-direction: row;
-		justify-content: center;
-		gap: 100px;
-	}
-}
-.welcome__title {
-	margin: 0;
-	font-size: 60px;
-	font-weight: 700;
-	text-align: center;
-	line-height: 125%;
-	color: #eee;
-}
-@media (min-width: 769px) {
-	.welcome__title {
-		text-align: left;
-	}
-}
-.welcome__title span {
-	color: #00adb5;
-	display: block;
-}
-/* .welcome__img {
-} */
-
 /* ### About-Me Block ### */
 .about-me {
 	padding: 70px 45px;
@@ -99,13 +49,8 @@ body {
 }
 
 /* ### Services Block ### */
-.services {
-	padding: 85px 25px;
-	background-image: url(../img/services-background.png);
-	background-color: #192130;
-}
 .services__title {
-	margin: 0;
+	margin: 0 0 60px 0;
 	font-size: 42px;
 	font-weight: 700;
 	color: #eee;

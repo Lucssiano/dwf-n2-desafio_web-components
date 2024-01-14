@@ -1,0 +1,29 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+}
+
+.services {
+	display: flex;
+	flex-direction: column;
+}
+.services__see-more-container {
+	margin-top: 50px;
+	order: 1;
+	color: #eee;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+.services__see-more-icon {
+	font-size: 24px;
+}
+.services__see-more__paragraph {
+	font-size: 18px;
+	font-weight: 400;
+}

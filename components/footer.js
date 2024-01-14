@@ -7,19 +7,19 @@ function footerComponent(el) {
           <img src="./img/logo-img.jpg" alt="Logo Luciano" class="logo">
         </a>
         <nav class="footer__nav">
-          <a href="#home" class="footer__nav-link">
+          <a href="./" class="footer__nav-link">
             <i class='bx bx-home nav-icon'></i>
             <span>Home</span>
           </a>
-          <a href="#portfolio" class="footer__nav-link">
+          <a href="./portfolio.html" class="footer__nav-link">
             <i class='bx bx-briefcase nav-icon'></i>
             <span>Portfolio</span>
           </a>
-          <a href="#servicios" class="footer__nav-link">
+          <a href="./servicios.html" class="footer__nav-link">
             <i class='bx bx-user nav-icon'></i>
             <span>Servicios</span>
           </a>
-          <a href="#contacto" class="footer__nav-link">
+          <a href="./contacto.html" class="footer__nav-link">
             <i class='bx bx-phone nav-icon'></i>
             <span>Contacto</span>
           </a>
@@ -36,7 +36,7 @@ function footerComponent(el) {
           </a>
         </div>
         <div class="footer__terms-container">
-          <p class="footer__terms">©2024 - <a href="https://apx.school">https://apx.school</a></p>
+          <p class="footer__terms">©2024 - <a href="https://apx.school" target="_blank">https://apx.school</a></p>
         </div>`;
 
 	el.appendChild(componentEl);

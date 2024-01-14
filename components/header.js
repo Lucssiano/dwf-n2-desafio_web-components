@@ -12,16 +12,16 @@ function headerComponent(el) {
     <div class="header__menu-div line-3"></div>
   </div>
   <nav class="header__nav-mobile">
-    <a href="#home" class="header__nav-link">Home</a>
-    <a href="#portfolio" class="header__nav-link">Portfolio</a>
-    <a href="#servicios" class="header__nav-link">Servicios</a>
-    <a href="#contacto" class="header__nav-link">Contacto</a>
+    <a href="./" class="header__nav-link">Home</a>
+    <a href="./portfolio.html" class="header__nav-link">Portfolio</a>
+    <a href="./servicios.html" class="header__nav-link">Servicios</a>
+    <a href="./contacto.html" class="header__nav-link">Contacto</a>
   </nav>
   <nav class="header__nav-desktop">
-    <a href="#home" class="header__nav-link">Home</a>
-    <a href="#portfolio" class="header__nav-link">Portfolio</a>
-    <a href="#servicios" class="header__nav-link">Servicios</a>
-    <a href="#contacto" class="header__nav-link">Contacto</a>
+    <a href="./" class="header__nav-link">Home</a>
+    <a href="./portfolio.html" class="header__nav-link">Portfolio</a>
+    <a href="./servicios.html" class="header__nav-link">Servicios</a>
+    <a href="./contacto.html" class="header__nav-link">Contacto</a>
   </nav>`;
 
 	const burgerMenuEl = componentEl.querySelector('.header__menu-button');
