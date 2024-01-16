@@ -5,7 +5,7 @@
 	const footerEl = document.querySelector('.footer');
 
 	headerComponent(headerEl);
-	welcomeComponent(welcomeEl, 'servicios');
-	servicesComponent(servicesEl); // probablemente haya que indicarle en que pagina estoy para servicios y portfolio
+	welcomeComponent(welcomeEl);
+	servicesComponent(servicesEl);
 	footerComponent(footerEl);
 })();

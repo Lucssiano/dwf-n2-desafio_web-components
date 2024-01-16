@@ -1,12 +1,21 @@
-function addService(service = {}, element) {
+function addService(params = {}, element) {
 	const componentEl = document.createElement('div');
 	componentEl.setAttribute('class', 'services__service');
 
 	componentEl.innerHTML = `
-	<img src=${service.imageURL} alt="Servicio" class="services__service-img">
-	<h4 class="services__service-title">${service.titulo}</h4>
-	<p class="services__service-description">${service.descripcion}</p>
+	<img src=${params.imageURL} alt="Servicio" class="services__service-img">
+	<h4 class="services__service-title">${params.titulo}</h4>
+	<p class="services__service-description">${params.descripcion}</p>
 	`;
+
+	if (params.projectURL) {
+		const linkEl = document.createElement('a');
+		linkEl.setAttribute('class', 'services__project-link');
+		linkEl.innerText = 'Ir al sitio web';
+		linkEl['href'] = params.projectURL;
+		linkEl['target'] = '_blank';
+		componentEl.appendChild(linkEl);
+	}
 
 	element.appendChild(componentEl);
 	// element.insertBefore(componentEl, el.firstChild);
@@ -30,23 +39,42 @@ function getServicesInfo() {
 	return fetch(ENTRIES_URL)
 		.then((res) => res.json())
 		.then((data) => {
-			// hacer un if como en welcome para ver en que pagina estoy (si portfolio o servicios) y a partir de ahi manejar lo que se hace
-			console.log(data.items);
+			const items = data.items;
 			const dataAsset = data.includes.Asset;
-			const services = data.items.filter((item) => !item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios y portfolio de Contentful
-			const servicesCollection = services.map((item) => {
-				return {
-					titulo: item.fields.title,
-					descripcion: item.fields.description,
-					idImage: item.fields.image.sys.id,
-				};
-			});
-			for (let i = 0; i < 3; i++) {
-				const service = servicesCollection[i];
-				const serviceImg = dataAsset.find((img) => img.sys.id === service.idImage);
-				service['imageURL'] = serviceImg.fields.file.url;
+			const page = document.title.toLowerCase();
+
+			// Ver de simplificar estos ifs en una funcion
+			if (page === 'portfolio') {
+				const projects = items.filter((item) => item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios y portfolio de Contentful
+				const projectCollection = [];
+				for (let i = 0; i < 3; i++) {
+					// Esto lo hago así porque solo quiero 3 projectos principalmente
+					const project = projects[i];
+					const projectImg = dataAsset.find((img) => img.sys.id === project.fields.image.sys.id).fields.file.url;
+					const projectObject = {
+						titulo: project.fields.title,
+						descripcion: project.fields.description,
+						imageURL: projectImg,
+						projectURL: project.fields.url,
+					};
+					projectCollection.push(projectObject);
+				}
+				return projectCollection;
+			} else {
+				const services = items.filter((item) => !item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios y portfolio de Contentful
+				const servicesCollection = [];
+				for (let i = 0; i < 3; i++) {
+					// Esto lo hago así porque solo quiero 3 servicios principalmente
+					const service = services[i];
+					const serviceImg = dataAsset.find((img) => img.sys.id === service.fields.image.sys.id).fields.file.url;
+					const serviceObject = {
+						titulo: service.fields.title,
+						descripcion: service.fields.description,
+						imageURL: serviceImg,
+					};
+					servicesCollection.push(serviceObject);
+				}
+				return servicesCollection;
 			}
-			servicesCollection.pop(); // para que solo me de 3 servicios
-			return servicesCollection;
 		});
 }

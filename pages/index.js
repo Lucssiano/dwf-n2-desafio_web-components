@@ -6,7 +6,7 @@
 	const footerEl = document.querySelector('.footer');
 
 	headerComponent(headerEl);
-	welcomeComponent(welcomeEl, 'home');
+	welcomeComponent(welcomeEl);
 	getPresentationFromContentful();
 	servicesComponent(servicesEl);
 	contactComponent(contactEl);
