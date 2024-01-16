@@ -9,3 +9,5 @@
 	servicesComponent(servicesEl);
 	footerComponent(footerEl);
 })();
+
+// function getImages(){}

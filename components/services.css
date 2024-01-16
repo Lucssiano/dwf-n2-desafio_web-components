@@ -16,7 +16,7 @@
 	}
 }
 .services__service {
-	padding: 42px 26px;
+	padding: 30px;
 	border-radius: 16px;
 	background-color: rgba(57, 62, 70, 0.5);
 	backdrop-filter: blur(2px);
@@ -27,6 +27,7 @@
 	width: 100%;
 	height: 158px;
 	object-fit: contain;
+	margin-bottom: 5px;
 }
 .services__service-title {
 	margin: 0;

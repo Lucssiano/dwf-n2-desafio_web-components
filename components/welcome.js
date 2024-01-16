@@ -8,3 +8,7 @@ function welcomeComponent(el) {
 
 	el.appendChild(componentEl);
 }
+
+function getWelcomeTitle() {}
+
+function addWelcomeTitle() {}

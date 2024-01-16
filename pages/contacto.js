@@ -7,3 +7,5 @@
 	contactComponent(contactEl);
 	footerComponent(footerEl);
 })();
+
+// function getImages(){}
