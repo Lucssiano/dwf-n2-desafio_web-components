@@ -36,7 +36,8 @@ function getWelcomeInfo() {
 				const welcomeImgId = '7jQ6h1myW7RiK7hKSpy0pU';
 				return makeWelcomeObject(welcomeTitleId, welcomeImgId, data);
 			}
-		});
+		})
+		.catch((error) => console.error('Error:', error));
 }
 
 function makeWelcomeObject(titleId, imageId, data) {

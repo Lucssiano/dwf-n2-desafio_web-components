@@ -45,16 +45,19 @@ function footerComponent(el) {
 }
 
 // La repito pero en realidad se puede usar directamente sin definirla porque el header y el footer siempre se usan juntos, y la función está definida en el header
-async function getLogo() {
-	const ACCESS_TOKEN = 'F1nsR-5x3RL7y74XwqvFHR4PFzhyq3VlTlj0b-Mnn6E';
-	const SPACE_ID = 'idhxktutcvpy';
-	const ENVIRONMENT_ID = 'master';
-	const LOGO_ID = '1plZT9oMWtLEUCWk89kpKy';
-	const LOGO_CONTENTFUL_URL = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}/assets/${LOGO_ID}?access_token=${ACCESS_TOKEN}`;
+// async function getLogo() {
+// 	const ACCESS_TOKEN = 'F1nsR-5x3RL7y74XwqvFHR4PFzhyq3VlTlj0b-Mnn6E';
+// 	const SPACE_ID = 'idhxktutcvpy';
+// 	const ENVIRONMENT_ID = 'master';
+// 	const LOGO_ID = '1plZT9oMWtLEUCWk89kpKy';
+// 	const LOGO_CONTENTFUL_URL = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}/assets/${LOGO_ID}?access_token=${ACCESS_TOKEN}`;
 
-	const res = await fetch(LOGO_CONTENTFUL_URL);
-	const data = await res.json();
-	const logo = data.fields.file.url;
-
-	return logo;
-}
+// 	try {
+// 		const res = await fetch(LOGO_CONTENTFUL_URL);
+// 		const data = await res.json();
+// 		const logo = data.fields.file.url;
+// 		return logo;
+// 	} catch (err) {
+// 		console.error(err);
+// 	}
+// }
