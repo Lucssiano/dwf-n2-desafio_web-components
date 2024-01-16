@@ -33,5 +33,7 @@
 	color: #00adb5;
 	display: block;
 }
-/* .welcome__img {
-} */
+.welcome__img {
+	max-height: 220px;
+	max-width: 220px;
+}

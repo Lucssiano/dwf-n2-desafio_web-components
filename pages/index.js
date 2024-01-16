@@ -1,19 +1,19 @@
 (function main() {
-	// addComponents();
 	const headerEl = document.querySelector('.header');
 	const welcomeEl = document.querySelector('.welcome');
-	const servicesEl = document.querySelector('.services');
+	const servicesEl = document.querySelector('.services__container');
 	const contactEl = document.querySelector('.contact');
 	const footerEl = document.querySelector('.footer');
 
 	headerComponent(headerEl);
-	welcomeComponent(welcomeEl);
+	welcomeComponent(welcomeEl, 'home');
+	getPresentationFromContentful();
 	servicesComponent(servicesEl);
 	contactComponent(contactEl);
 	footerComponent(footerEl);
+})();
 
-	// getServices();
-
+function getPresentationFromContentful() {
 	const ACCESS_TOKEN = 'F1nsR-5x3RL7y74XwqvFHR4PFzhyq3VlTlj0b-Mnn6E';
 	const SPACE_ID = 'idhxktutcvpy';
 	const ENVIRONMENT_ID = 'master';
@@ -23,29 +23,15 @@
 		.then((res) => res.json())
 		.then((data) => {
 			const items = data.items;
-			const welcomeItems = items.filter((item) => item.sys.contentType.sys.id === 'desafioWebcomponents');
-			console.log(welcomeItems, 'bienvenida');
-			const presentationItems = items.filter((item) => item.sys.contentType.sys.id === 'presentacionDesafioWebcomponents');
-			console.log(presentationItems, 'presentacion');
-			const serviceItems = items.filter(
-				(item) =>
-					item.sys.contentType.sys.id === 'serviciosproductosDesafioWebcomponents' && !item.fields.hasOwnProperty('url'),
-			);
-			console.log(serviceItems, 'servicios');
+			const presentationItem = items.find((item) => item.sys.contentType.sys.id === 'presentacionDesafioWebcomponents');
+			const presentationTitle = presentationItem.fields.title;
+			const presentationParagraph = presentationItem.fields.paragraph;
+			const presentationImgId = presentationItem.fields.personalImage.sys.id;
+			const dataAsset = data.includes.Asset;
+			const presentationImg = dataAsset.find((img) => img.sys.id === presentationImgId).fields.file.url;
+
+			document.querySelector('.about-me__title').innerText = presentationTitle;
+			document.querySelector('.about-me__description').innerText = presentationParagraph;
+			document.querySelector('.about-me__personal-img').src = presentationImg;
 		});
-})();
-
-// function addComponents() {
-// 	const headerEl = document.querySelector('.header');
-// 	const welcomeEl = document.querySelector('.welcome');
-// 	const servicesEl = document.querySelector('.services');
-// 	const contactEl = document.querySelector('.contact');
-// 	const footerEl = document.querySelector('.footer');
-
-// 	headerComponent(headerEl);
-// 	welcomeComponent(welcomeEl);
-// 	servicesComponent(servicesEl);
-// 	contactComponent(contactEl);
-// 	footerComponent(footerEl);
-// }
-// function getImages(){}
+}
