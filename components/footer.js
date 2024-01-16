@@ -2,42 +2,43 @@ function footerComponent(el) {
 	const componentEl = document.createElement('div');
 	componentEl.setAttribute('class', 'footer__container');
 
-	componentEl.innerHTML = `
-        <a href="/" class="img-logo-container">
-          <img src="./img/logo-img.jpg" alt="Logo Luciano" class="logo">
-        </a>
-        <nav class="footer__nav">
-          <a href="./" class="footer__nav-link">
-            <i class='bx bx-home nav-icon'></i>
-            <span>Home</span>
+  getLogo().then((logo) => {
+    componentEl.innerHTML = `
+          <a href="/" class="img-logo-container">
+            <img src=${logo} alt="Logo Luciano" class="logo">
           </a>
-          <a href="./portfolio.html" class="footer__nav-link">
-            <i class='bx bx-briefcase nav-icon'></i>
-            <span>Portfolio</span>
-          </a>
-          <a href="./servicios.html" class="footer__nav-link">
-            <i class='bx bx-user nav-icon'></i>
-            <span>Servicios</span>
-          </a>
-          <a href="./contacto.html" class="footer__nav-link">
-            <i class='bx bx-phone nav-icon'></i>
-            <span>Contacto</span>
-          </a>
-        </nav>
-        <div class="footer__social-media-container">
-          <a href="https://github.com/Lucssiano" class="footer__social-media-link" target="_blank">
-            <i class='bx bxl-github footer__social-media-icon'></i>
-          </a>
-          <a href="https://www.linkedin.com/in/lucianoriente" class="footer__social-media-link" target="_blank">
-            <i class='bx bxl-linkedin-square footer__social-media-icon'></i>
-          </a>
-          <a href="https://twitter.com/LuchooDev" class="footer__social-media-link" target="_blank">
-            <i class='bx bxl-twitter footer__social-media-icon'></i>
-          </a>
-        </div>
-        <div class="footer__terms-container">
-          <p class="footer__terms">©2024 - <a href="https://apx.school" target="_blank">https://apx.school</a></p>
-        </div>`;
-
-	el.appendChild(componentEl);
+          <nav class="footer__nav">
+            <a href="./" class="footer__nav-link">
+              <i class='bx bx-home nav-icon'></i>
+              <span>Home</span>
+            </a>
+            <a href="./portfolio.html" class="footer__nav-link">
+              <i class='bx bx-briefcase nav-icon'></i>
+              <span>Portfolio</span>
+            </a>
+            <a href="./servicios.html" class="footer__nav-link">
+              <i class='bx bx-user nav-icon'></i>
+              <span>Servicios</span>
+            </a>
+            <a href="./contacto.html" class="footer__nav-link">
+              <i class='bx bx-phone nav-icon'></i>
+              <span>Contacto</span>
+            </a>
+          </nav>
+          <div class="footer__social-media-container">
+            <a href="https://github.com/Lucssiano" class="footer__social-media-link" target="_blank">
+              <i class='bx bxl-github footer__social-media-icon'></i>
+            </a>
+            <a href="https://www.linkedin.com/in/lucianoriente" class="footer__social-media-link" target="_blank">
+              <i class='bx bxl-linkedin-square footer__social-media-icon'></i>
+            </a>
+            <a href="https://twitter.com/LuchooDev" class="footer__social-media-link" target="_blank">
+              <i class='bx bxl-twitter footer__social-media-icon'></i>
+            </a>
+          </div>
+          <div class="footer__terms-container">
+            <p class="footer__terms">©2024 - <a href="https://apx.school" target="_blank">https://apx.school</a></p>
+          </div>`;
+    el.appendChild(componentEl);
+  });
 }
