@@ -4,15 +4,17 @@
 }
 
 /* ### Loader ### */
-.loader-container {
-	max-width: 510px;
-	margin: 50px auto;
+/* .loader-container {
 	text-align: center;
 	display: none;
+	background-color: #13171c;
+	height: 100vh;
 }
 .loader-container i {
 	font-size: 100px;
-}
+	margin-top: 100px;
+	color: #00adb5;
+} */
 
 /* ### Header ###  */
 .header__container {
@@ -28,7 +30,7 @@
 }
 .header__menu-button.active {
 	position: fixed;
-	right: 30px;
+	right: 25px;
 }
 @media (min-width: 769px) {
 	.header__menu-button {

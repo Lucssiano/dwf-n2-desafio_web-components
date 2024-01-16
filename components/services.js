@@ -22,11 +22,26 @@ function addService(params = {}, element) {
 }
 
 function servicesComponent(el) {
-	getServicesInfo().then((services) => {
-		for (const service of services) {
-			addService(service, el);
-		}
-	});
+	getServicesInfo()
+		.then((services) => {
+			for (const service of services) {
+				addService(service, el);
+			}
+		})
+		.then(() => {
+			const services = document.querySelectorAll('.services__service');
+			let amountOfServices = 3;
+			for (let i = 0; i < amountOfServices; i++) {
+				const service = services[i];
+				service.style.display = 'flex';
+			}
+			const seeMoreButton = document.querySelector('.services__see-more-items');
+			seeMoreButton.addEventListener('click', () => {
+				const service = services[amountOfServices];
+				service.style.display = 'flex';
+				amountOfServices++; // En realidad se sumarian de a 3, pero yo sumo de a 1 porque no tengo más
+			});
+		});
 }
 
 function getServicesInfo() {
@@ -46,35 +61,28 @@ function getServicesInfo() {
 			// Ver de simplificar estos ifs en una funcion
 			if (page === 'portfolio') {
 				const projects = items.filter((item) => item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios y portfolio de Contentful
-				const projectCollection = [];
-				for (let i = 0; i < 3; i++) {
-					// Esto lo hago así porque solo quiero 3 projectos principalmente
-					const project = projects[i];
-					const projectImg = dataAsset.find((img) => img.sys.id === project.fields.image.sys.id).fields.file.url;
-					const projectObject = {
+				const projectsCollection = projects.map((project) => {
+					const projectImg = dataAsset.find((img) => img.sys.id === project.fields.image.sys.id);
+					return {
 						titulo: project.fields.title,
 						descripcion: project.fields.description,
-						imageURL: projectImg,
+						imageURL: projectImg.fields.file.url,
 						projectURL: project.fields.url,
 					};
-					projectCollection.push(projectObject);
-				}
-				return projectCollection;
+				});
+				return projectsCollection;
 			} else {
 				const services = items.filter((item) => !item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios y portfolio de Contentful
-				const servicesCollection = [];
-				for (let i = 0; i < 3; i++) {
-					// Esto lo hago así porque solo quiero 3 servicios principalmente
-					const service = services[i];
-					const serviceImg = dataAsset.find((img) => img.sys.id === service.fields.image.sys.id).fields.file.url;
-					const serviceObject = {
+				const servicesCollection = services.map((service) => {
+					const serviceImg = dataAsset.find((img) => img.sys.id === service.fields.image.sys.id);
+					return {
 						titulo: service.fields.title,
 						descripcion: service.fields.description,
-						imageURL: serviceImg,
+						imageURL: serviceImg.fields.file.url,
 					};
-					servicesCollection.push(serviceObject);
-				}
+				});
 				return servicesCollection;
 			}
-		});
+		})
+		.catch((err) => console.error(err));
 }

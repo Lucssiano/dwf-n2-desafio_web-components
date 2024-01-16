@@ -22,7 +22,7 @@
 	backdrop-filter: blur(2px);
 	max-width: 505px;
 	justify-self: center;
-	display: flex;
+	display: none;
 	flex-direction: column;
 }
 .services__service-img {
