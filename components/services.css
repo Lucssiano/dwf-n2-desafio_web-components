@@ -16,14 +16,24 @@
 	}
 }
 .services__service {
-	padding: 30px;
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: all 0.3s;
+}
+.services__service.active {
 	border-radius: 16px;
 	background-color: rgba(57, 62, 70, 0.5);
 	backdrop-filter: blur(2px);
 	max-width: 505px;
-	justify-self: center;
-	display: none;
+	padding: 30px;
+	position: static;
+	height: auto;
+	opacity: 1;
+	display: flex;
 	flex-direction: column;
+	justify-self: center;
 }
 .services__service-img {
 	width: 100%;

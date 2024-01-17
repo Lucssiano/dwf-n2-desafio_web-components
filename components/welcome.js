@@ -22,18 +22,19 @@ function getWelcomeInfo() {
 		.then((res) => res.json())
 		.then((data) => {
 			const page = document.title.toLowerCase();
+
 			/* Ver de hacerlo de otra forma para no tener que usar ids */
-			if (page == 'home') {
-				const welcomeTitleId = '3GNjf5VVijfT52XBNJGmnF';
-				const welcomeImgId = '74WvkosAg0fhqaBybHm2xZ';
-				return makeWelcomeObject(welcomeTitleId, welcomeImgId, data);
-			} else if (page == 'servicios') {
+			if (page == 'servicios') {
 				const welcomeTitleId = '1JU4ZlulSjOHQxaIgRInqF';
 				const welcomeImgId = '7jQ6h1myW7RiK7hKSpy0pU';
 				return makeWelcomeObject(welcomeTitleId, welcomeImgId, data);
 			} else if (page == 'portfolio') {
 				const welcomeTitleId = '4gygLfrUXYxrKSQUZ6YPmk';
 				const welcomeImgId = '7jQ6h1myW7RiK7hKSpy0pU';
+				return makeWelcomeObject(welcomeTitleId, welcomeImgId, data);
+			} else {
+				const welcomeTitleId = '3GNjf5VVijfT52XBNJGmnF';
+				const welcomeImgId = '74WvkosAg0fhqaBybHm2xZ';
 				return makeWelcomeObject(welcomeTitleId, welcomeImgId, data);
 			}
 		})

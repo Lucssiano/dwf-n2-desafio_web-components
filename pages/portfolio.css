@@ -21,8 +21,14 @@ body {
 	padding: 10px;
 	margin-top: 10px;
 }
+@media (min-width: 769px) {
+	.services__project-link:hover {
+		background-color: #eee;
+		color: #000;
+		transition: background-color 0.4s, color 0.4s;
+	}
+}
 .services__see-more-container {
-	margin-top: 50px;
 	color: #eee;
 	display: flex;
 	justify-content: center;
@@ -33,8 +39,8 @@ body {
 	justify-content: center;
 	gap: 10px;
 }
-@media (min-width:769px){
-	.services__see-more-items:hover{
+@media (min-width: 769px) {
+	.services__see-more-items:hover {
 		cursor: pointer;
 		color: #00adb5;
 		transition: color 0.3s;

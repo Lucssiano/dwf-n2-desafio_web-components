@@ -33,34 +33,34 @@ function servicesComponent(el) {
 			let amountOfServices = 3;
 			for (let i = 0; i < amountOfServices; i++) {
 				const service = services[i];
-				service.style.display = 'flex';
+				service.classList.toggle('active');
 			}
+
 			const seeMoreButton = document.querySelector('.services__see-more-items');
-			if (seeMoreButton){
-				let arrowType = "up"
-				let seeMoreParagraph = "Ver menos"
+			if (seeMoreButton) {
+				let arrowType = 'up';
+				let seeMoreParagraph = 'Ver menos';
 				seeMoreButton.addEventListener('click', () => {
+					const service = services[amountOfServices];
+					service.classList.toggle('active');
+
 					seeMoreButton.innerHTML = `
 					<i class='bx bx-${arrowType}-arrow-circle services__see-more-icon'></i>
 					<p class="services__see-more__paragraph">${seeMoreParagraph}</p>
-					`
-					const service = services[amountOfServices];
-					if(arrowType == "up") {
-						service.style.display = 'flex';
-						// amountOfServices++; // En realidad se sumarian de a 3, pero yo sumo de a 1 porque no tengo más
-						arrowType = "down";
-						seeMoreParagraph = "Ver más";
+					`;
+
+					if (arrowType == 'up') {
+						// Acá en realidad se deberian ir sumando los servicios/proyectos de a 3, pero yo no tengo más que 4 así que no modifico la variable de cantidad de servicios
+						arrowType = 'down';
+						seeMoreParagraph = 'Ver más';
+					} else {
+						// Acá en realidad se deberian ir restando los servicios/proyectos de a 3, pero yo no tengo más que 4 así que no modifico la variable de cantidad de servicios
+						arrowType = 'up';
+						seeMoreParagraph = 'Ver menos';
 					}
-					else {
-						service.style.display = 'none';
-						// amountOfServices--; // En realidad se sumarian de a 3, pero yo sumo de a 1 porque no tengo más
-						arrowType = "up";
-						seeMoreParagraph = "Ver menos";
-					}
-					
 				});
 			}
-		});	
+		});
 }
 
 function getServicesInfo() {
@@ -76,34 +76,23 @@ function getServicesInfo() {
 			const items = data.items;
 			const dataAsset = data.includes.Asset;
 			const page = document.title.toLowerCase();
-         // const projects = items.filter((item) => item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios y portfolio de Contentful
-		 // makeServiceObject(projects, page, data);
+			const isPortfolioPage = page == 'portfolio';
+			const projects = items.filter((item) => item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios de Contentful
+			const services = items.filter((item) => !item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios de Contentful
 
-			// Ver de simplificar estos ifs en una funcion
-			if (page === 'portfolio') {
-				const projects = items.filter((item) => item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios y portfolio de Contentful
-				const projectsCollection = projects.map((project) => {
-					const projectImg = dataAsset.find((img) => img.sys.id === project.fields.image.sys.id);
-					return {
-						titulo: project.fields.title,
-						descripcion: project.fields.description,
-						imageURL: projectImg.fields.file.url,
-						projectURL: project.fields.url,
-					};
-				});
-				return projectsCollection;
-			} else {
-				const services = items.filter((item) => !item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios y portfolio de Contentful
-				const servicesCollection = services.map((service) => {
-					const serviceImg = dataAsset.find((img) => img.sys.id === service.fields.image.sys.id);
-					return {
-						titulo: service.fields.title,
-						descripcion: service.fields.description,
-						imageURL: serviceImg.fields.file.url,
-					};
-				});
-				return servicesCollection;
-			}
+			const itemsToUse = isPortfolioPage ? projects : services;
+
+			const itemsCollection = itemsToUse.map((item) => {
+				const itemImg = dataAsset.find((img) => img.sys.id === item.fields.image.sys.id);
+				const itemObject = {
+					titulo: item.fields.title,
+					descripcion: item.fields.description,
+					imageURL: itemImg.fields.file.url,
+				};
+				if (isPortfolioPage) itemObject['projectURL'] = item.fields.url;
+				return itemObject;
+			});
+			return itemsCollection;
 		})
 		.catch((err) => console.error(err));
 }
