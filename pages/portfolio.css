@@ -33,6 +33,13 @@ body {
 	justify-content: center;
 	gap: 10px;
 }
+@media (min-width:769px){
+	.services__see-more-items:hover{
+		cursor: pointer;
+		color: #00adb5;
+		transition: color 0.3s;
+	}
+}
 .services__see-more-icon {
 	font-size: 24px;
 }

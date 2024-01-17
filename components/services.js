@@ -36,12 +36,31 @@ function servicesComponent(el) {
 				service.style.display = 'flex';
 			}
 			const seeMoreButton = document.querySelector('.services__see-more-items');
-			seeMoreButton.addEventListener('click', () => {
-				const service = services[amountOfServices];
-				service.style.display = 'flex';
-				amountOfServices++; // En realidad se sumarian de a 3, pero yo sumo de a 1 porque no tengo más
-			});
-		});
+			if (seeMoreButton){
+				let arrowType = "up"
+				let seeMoreParagraph = "Ver menos"
+				seeMoreButton.addEventListener('click', () => {
+					seeMoreButton.innerHTML = `
+					<i class='bx bx-${arrowType}-arrow-circle services__see-more-icon'></i>
+					<p class="services__see-more__paragraph">${seeMoreParagraph}</p>
+					`
+					const service = services[amountOfServices];
+					if(arrowType == "up") {
+						service.style.display = 'flex';
+						// amountOfServices++; // En realidad se sumarian de a 3, pero yo sumo de a 1 porque no tengo más
+						arrowType = "down";
+						seeMoreParagraph = "Ver más";
+					}
+					else {
+						service.style.display = 'none';
+						// amountOfServices--; // En realidad se sumarian de a 3, pero yo sumo de a 1 porque no tengo más
+						arrowType = "up";
+						seeMoreParagraph = "Ver menos";
+					}
+					
+				});
+			}
+		});	
 }
 
 function getServicesInfo() {
@@ -57,6 +76,8 @@ function getServicesInfo() {
 			const items = data.items;
 			const dataAsset = data.includes.Asset;
 			const page = document.title.toLowerCase();
+         // const projects = items.filter((item) => item.fields.hasOwnProperty('url')); // Ver de buscar otro filtro y sacar el item de url de los servicios y portfolio de Contentful
+		 // makeServiceObject(projects, page, data);
 
 			// Ver de simplificar estos ifs en una funcion
 			if (page === 'portfolio') {
