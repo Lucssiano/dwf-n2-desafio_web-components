@@ -37,12 +37,8 @@ function headerComponent(el) {
 				line.classList.toggle('active');
 			});
 		});
-
 		el.appendChild(componentEl);
 	});
-	// .finally(() => {
-	// 	document.querySelector('.loader-container').style.display = 'none';
-	// });
 }
 
 // La repito pero en realidad se puede usar directamente sin definirla porque el header y el footer siempre se usan juntos, y la función está definida en el header
@@ -53,12 +49,6 @@ async function getLogo() {
 	const LOGO_ID = '1plZT9oMWtLEUCWk89kpKy';
 	const LOGO_CONTENTFUL_URL = `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/${ENVIRONMENT_ID}/assets/${LOGO_ID}?access_token=${ACCESS_TOKEN}`;
 
-	// document.body.replaceChildren() = `
-	// <div class="loader-container">
-	// 	<i class='bx bx-loader-circle bx-spin'></i>
-	// </div>`;
-	// const loaderEl = document.querySelector('.loader-container');
-	// loaderEl.style.display = 'inherit';
 	try {
 		const res = await fetch(LOGO_CONTENTFUL_URL);
 		const data = await res.json();
